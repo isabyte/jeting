@@ -1,4 +1,4 @@
-package jeting.entities;
+package jeting.model.entities;
 
 import java.util.Date;
 
