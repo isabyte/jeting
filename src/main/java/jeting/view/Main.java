@@ -1,4 +1,4 @@
-package jeting;
+package jeting.view;
 
 public class Main {
 
