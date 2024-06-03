@@ -40,7 +40,7 @@ public class EnderecosEntidades {
 	private String pais;
 	
 	@ManyToOne
-	@JoinColumn(name = "clientes_fk")
+	@JoinColumn(name = "clientes_id_fk")
 	private ClientesEntidades cliente;
 	
 	public EnderecosEntidades() {
