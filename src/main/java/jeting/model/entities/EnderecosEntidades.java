@@ -1,21 +1,53 @@
 package jeting.model.entities;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+@Entity(name="enderecos")
 public class EnderecosEntidades {
-	Long id;
-	String cep;
-	String logradouro;
-	int numero;
-	String complemento;
-	String bairro;
-	String cidade;
-	String estado;
-	String pais;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	
+	@Column
+	private String cep;
+	
+	@Column
+	private String logradouro;
+	
+	@Column
+	private int numero;
+	
+	@Column
+	private String complemento;
+	
+	@Column
+	private String bairro;
+	
+	@Column
+	private String cidade;
+	
+	@Column
+	private String estado;
+	
+	@Column
+	private String pais;
+	
+	@ManyToOne
+	@JoinColumn(name = "clientes_fk")
+	private ClientesEntidades cliente;
 	
 	public EnderecosEntidades() {
 	}
 
 	public EnderecosEntidades(Long id, String cep, String logradouro, int numero, String complemento, String bairro,
-			String cidade, String estado, String pais) {
+			String cidade, String estado, String pais, ClientesEntidades cliente) {
 		super();
 		this.id = id;
 		this.cep = cep;
@@ -26,6 +58,7 @@ public class EnderecosEntidades {
 		this.cidade = cidade;
 		this.estado = estado;
 		this.pais = pais;
+		this.cliente = cliente;
 	}
 
 	public Long getId() {
