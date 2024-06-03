@@ -87,4 +87,14 @@ public class ClientesEntidades {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
+
+
+	public List<EnderecosEntidades> getEndereco() {
+		return endereco;
+	}
+
+
+	public void setEndereco(List<EnderecosEntidades> endereco) {
+		this.endereco = endereco;
+	}
 }
