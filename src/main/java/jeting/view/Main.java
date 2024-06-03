@@ -72,6 +72,8 @@ public class Main {
 				break;
 			case 5:
 				System.out.println("-- Excluir cliente --");
+				System.out.println("Digite o ID do cliente a ser excluído:");
+				clientesController.excluirCliente(scanner.nextLong());
 				break;
 			case 0:
 				System.out.println("Encerrando sessão...");

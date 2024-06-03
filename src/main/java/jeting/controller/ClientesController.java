@@ -29,5 +29,15 @@ public class ClientesController {
 	public List<ClientesEntidades> findAll() {
 		return clientesServices.findAll();
 	}
+	
+	public void excluirCliente(Long id) {
+		ClientesEntidades clienteAExcluir = clientesServices.findById(id);
+		if(clienteAExcluir == null) {
+			System.out.println("Cliente não encontrado");
+			return;
+		}
+		clientesServices.deleteById(id);
+		System.out.println("Cliente excluído com sucesso");
+	}
 
 }
