@@ -1,12 +1,15 @@
 package jeting.view;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 import jeting.controller.ClientesController;
+import jeting.controller.EnderecosController;
 import jeting.model.entities.ClientesEntidades;
 import jeting.model.entities.EnderecosEntidades;
 import jeting.model.services.ClientesServices;
+import jeting.model.services.EnderecosServices;
 
 public class Main {
 
@@ -16,6 +19,8 @@ public class Main {
 		
 		ClientesServices clientesServices = new ClientesServices();
 		ClientesController clientesController = new ClientesController(clientesServices);
+		EnderecosServices enderecosServices = new EnderecosServices();
+		EnderecosController enderecosController = new EnderecosController(enderecosServices);
 		
 		while(menu) {
 			System.out.println("Bem-vindo. Escolha uma opção:");
@@ -67,9 +72,46 @@ public class Main {
             	System.out.println("E-mail do cliente:");
             	clientesDTO.setEmail(scanner.nextLine());
             	
-            	// endereco
+            	//novo objeto enderecosDTO
+            	EnderecosDTO enderecosDTO = new EnderecosDTO();
+            	
+            	System.out.println("Nome da rua:");
+            	enderecosDTO.setLogradouro(scanner.nextLine());
+            	
+            	System.out.println("Número:");
+            	enderecosDTO.setNumero(scanner.nextInt());
+            	scanner.nextLine();
+            	
+            	System.out.println("Complemento:");
+            	enderecosDTO.setComplemento(scanner.nextLine());
+            	
+            	System.out.println("Bairro:");
+            	enderecosDTO.setBairro(scanner.nextLine());
+            	
+            	System.out.println("Cidade:");
+            	enderecosDTO.setCidade(scanner.nextLine());
+            	
+            	System.out.println("Estado:");
+            	enderecosDTO.setEstado(scanner.nextLine());
+            	
+            	System.out.println("País:");
+            	enderecosDTO.setPais(scanner.nextLine());
+            	
+            	System.out.println("CEP:");
+            	enderecosDTO.setCep(scanner.nextLine());
             	
             	ClientesEntidades novoCliente = clientesController.cadastrarCliente(clientesDTO);
+            	
+            	enderecosDTO.setCliente(novoCliente);
+            	
+            	EnderecosEntidades novoEndereco = enderecosController.cadastrarEndereco(enderecosDTO);
+
+            	List<EnderecosEntidades> listaEnderecos = new ArrayList<EnderecosEntidades>();
+        		listaEnderecos.add(novoEndereco);
+        		
+        		novoCliente.setEndereco(listaEnderecos);
+            	
+            	
             	System.out.println("Cliente cadastrado com sucesso! ID: " + novoCliente.getId());
             	break;
 			case 4:
