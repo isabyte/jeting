@@ -1,9 +1,25 @@
 package jeting.model.entities;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity(name = "servicos")
 public class ServicosEntidades {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Long id;
+	
+	@Column(name = "nomeServico", nullable = false)
 	String nomeServico;
+	
+	@Column(name = "valor", nullable = false)
 	Float valor;
+	
+	@Column(name = "descricao", nullable = false)
 	String descricao;
 	
 	public ServicosEntidades() {
@@ -11,7 +27,6 @@ public class ServicosEntidades {
 	}
 
 	public ServicosEntidades(Long id, String nomeServico, Float valor, String descricao) {
-		super();
 		this.id = id;
 		this.nomeServico = nomeServico;
 		this.valor = valor;
