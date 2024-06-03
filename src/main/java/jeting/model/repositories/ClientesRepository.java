@@ -43,7 +43,7 @@ public class ClientesRepository implements BasicCrud {
 			em.getTransaction().commit();
 		}
 	}
-	
+
 	public List<ClientesEntidades> findAll() {
 		return em.createQuery("SELECT c FROM clientes c", ClientesEntidades.class).getResultList();
 	}
