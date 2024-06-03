@@ -1,5 +1,6 @@
 package jeting.view;
 
+import java.util.List;
 import java.util.Scanner;
 
 import jeting.controller.ClientesController;
@@ -30,6 +31,16 @@ public class Main {
 			switch(opcao) {
 			case 1:
 				System.out.println("-- Visualizar todos os clientes --");
+				List<ClientesEntidades> clientes = clientesController.findAll();
+				for(ClientesEntidades cliente : clientes) {
+					System.out.println(
+							"ID: " + cliente.getId() +
+							" - "+ cliente.getNome() +
+							" - " + cliente.getCpfCnpj() +
+							" - " + cliente.getTelefone() +
+							" - " + cliente.getEmail() + 
+							" - " + cliente.getEndereco());
+				}
 				break;
 			case 2:
 				System.out.println("-- Buscar cliente pelo ID --");
