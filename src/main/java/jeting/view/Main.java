@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import jeting.controller.ClientesController;
 import jeting.model.entities.ClientesEntidades;
+import jeting.model.entities.EnderecosEntidades;
 import jeting.model.services.ClientesServices;
 
 public class Main {
@@ -38,8 +39,12 @@ public class Main {
 							" - "+ cliente.getNome() +
 							" - " + cliente.getCpfCnpj() +
 							" - " + cliente.getTelefone() +
-							" - " + cliente.getEmail() + 
-							" - " + cliente.getEndereco());
+							" - " + cliente.getEmail());
+					for(EnderecosEntidades x: cliente.getEndereco()) {
+						System.out.println("Endereço: " + x.getLogradouro() +
+								", " + x.getNumero() +
+								", " + x.getBairro());
+					}
 				}
 				break;
 			case 2:
