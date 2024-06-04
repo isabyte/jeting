@@ -100,7 +100,6 @@ private static Scanner scanner = new Scanner(System.in);
 		
 		System.out.print("ID do Cliente a ser atualizado: ");
 		Long id = scanner.nextLong();
-		scanner.nextLine();
 
         ClientesEntidades clienteExistente = clientesController.clientesServices.findById(id);
         if (clienteExistente == null) {
