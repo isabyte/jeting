@@ -14,19 +14,20 @@ import javax.persistence.OneToMany;
 public class ClientesEntidades {
 	
 	@Id
+	@Column(name = "id", nullable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column
+	@Column(name = "nome", nullable = false)
 	private String nome;
 	
-	@Column(name="cpf_cnpj")
+	@Column(name="cpf_cnpj", nullable = false)
 	private String cpfCnpj;
 	
-	@Column
+	@Column(name= "email", nullable = false)
 	private String email;
 	
-	@Column
+	@Column(name= "telefone", nullable = false)
 	private String telefone;
 	
 	@OneToMany(mappedBy="cliente", cascade = CascadeType.ALL)
