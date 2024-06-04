@@ -12,6 +12,14 @@ import jeting.model.services.ClientesServices;
 import jeting.model.services.EnderecosServices;
 
 public class Main {
+	/*
+	public static void main(String[] args) {
+		FuncoesServicos funcoesServicos = new FuncoesServicos();
+		funcoesServicos.menuServicos();
+	}
+	*/
+	
+	
 	
 	private static Scanner scanner = new Scanner(System.in);
 	

@@ -13,7 +13,7 @@ public class ServicosEntidades {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Long id;
 	
-	@Column(name = "nomeServico", nullable = false)
+	@Column(name = "nome_servico", nullable = false)
 	String nomeServico;
 	
 	@Column(name = "valor", nullable = false)
