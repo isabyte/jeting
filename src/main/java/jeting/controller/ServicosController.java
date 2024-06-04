@@ -17,7 +17,7 @@ public ServicosServices servicosServices;
 	public ServicosEntidades cadastrarServico(ServicosDTO servicosDTO) {
 		ServicosEntidades novoServico = new ServicosEntidades();
 		novoServico.setNomeServico(servicosDTO.getNomeServico());
-		novoServico.setNomeServico(servicosDTO.getDescricao());
+		novoServico.setDescricao(servicosDTO.getDescricao());
 		novoServico.setValor(servicosDTO.getValor());
 		return servicosServices.cadastrarNovoServico(novoServico);
 	}

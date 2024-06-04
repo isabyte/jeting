@@ -18,12 +18,13 @@ public class FuncoesServicos {
 		boolean menu = true;
 		
 		while(menu) {
-			System.out.println("\nBem-vindo. Escolha uma opção:");
+			System.out.println("\n-- Serviços --");
+			System.out.println("Escolha uma opção:");
 			System.out.println("1- Visualizar todos os serviços");
 			System.out.println("2- Cadastrar novo serviço");
 			System.out.println("3- Atualizar serviço");
 			System.out.println("4- Excluir serviço");
-			System.out.println("0- Sair");
+			System.out.println("0- Voltar");
 			
 			int opcao = scanner.nextInt();
 			scanner.nextLine();
@@ -46,7 +47,7 @@ public class FuncoesServicos {
 				break;
 
 			case 0:
-				System.out.println("Encerrando sessão...");
+				System.out.println("Voltando ao menu principal");
 				menu = false;
 				break;
 			default:
@@ -71,7 +72,7 @@ public class FuncoesServicos {
 	}
 
 	private static void atualizarServico() {
-		System.out.print("ID do Cliente a ser atualizado: ");
+		System.out.print("ID do serviço a ser atualizado: ");
 		Long id = scanner.nextLong();
 		scanner.nextLine();
 
@@ -83,13 +84,13 @@ public class FuncoesServicos {
 
 		ServicosDTO servicosDTO = new ServicosDTO();
 
-		System.out.print("Novo Servico: ");
+		System.out.print("Novo nome do serviço: ");
 		servicosDTO.setNomeServico(scanner.nextLine());
 
-		System.out.print("Nova Descricao: ");
+		System.out.print("Nova descrição: ");
 		servicosDTO.setDescricao(scanner.nextLine());
 
-		System.out.print("Novo Valor: ");
+		System.out.print("Novo valor: ");
 		servicosDTO.setValor(scanner.nextFloat());
 
 		ServicosEntidades servicoAtualizado = new ServicosEntidades();
@@ -99,9 +100,9 @@ public class FuncoesServicos {
 		servicoAtualizado.setValor(servicosDTO.getValor());
 		servicoAtualizado = servicosController.servicosServices.atualizarServico(servicoAtualizado);
 		if (servicoAtualizado != null) {
-			System.out.println("cliente atualizado");
+			System.out.println("Serviço atualizado com sucesso");
 		} else {
-			System.out.println("não foi atualizado");
+			System.out.println("Erro ao atualizar");
 		}
 	}
 
@@ -116,17 +117,17 @@ public class FuncoesServicos {
 	private static void cadastrarServico() {
 		ServicosDTO servicosDTO = new ServicosDTO();
 
-		System.out.print("Nome do Servico: ");
+		System.out.print("Nome do serviço: ");
 		servicosDTO.setNomeServico(scanner.nextLine());
 
-		System.out.print("Descrição do Servico: ");
+		System.out.print("Descrição do serviço: ");
 		servicosDTO.setDescricao(scanner.nextLine());
 
-		System.out.print("Valor do Servico: ");
+		System.out.print("Valor do serviço: ");
 		servicosDTO.setValor(scanner.nextFloat());
 
 		ServicosEntidades novoServico = servicosController.cadastrarServico(servicosDTO);
-		System.out.println("Servico adicionado com sucesso: " + novoServico.getId());
+		System.out.println("Serviço adicionado com sucesso. ID: " + novoServico.getId());
 	}
 
 }
