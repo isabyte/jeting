@@ -26,10 +26,9 @@ public class Main {
 		while(menu) {
 			System.out.println("Bem-vindo. Escolha uma opção:");
 			System.out.println("1- Visualizar todos os clientes");
-			System.out.println("2- Buscar cliente pelo ID");
-			System.out.println("3- Cadastrar novo cliente");
-			System.out.println("4- Atualizar cliente");
-			System.out.println("5- Excluir cliente");
+			System.out.println("2- Cadastrar novo cliente");
+			System.out.println("3- Atualizar cliente");
+			System.out.println("4- Excluir cliente");
 			System.out.println("0- Sair");
 			
 			int opcao = scanner.nextInt();
@@ -54,9 +53,6 @@ public class Main {
 				}
 				break;
 			case 2:
-				System.out.println("-- Buscar cliente pelo ID --");
-				break;
-			case 3:
 				System.out.println("-- Cadastrar novo cliente --");
 				//novo objeto clientesDTO, le e guarda
             	ClientesDTO clientesDTO = new ClientesDTO();
@@ -115,12 +111,12 @@ public class Main {
             	
             	System.out.println("Cliente cadastrado com sucesso! ID: " + novoCliente.getId());
             	break;
-			case 4:
+			case 3:
 				System.out.println("-- Atualizar cliente --");
 				System.out.println("Digite o ID do cliente a ser atualizado:");
 				atualizarCliente(scanner.nextLong());
 				break;
-			case 5:
+			case 4:
 				System.out.println("-- Excluir cliente --");
 				System.out.println("Digite o ID do cliente a ser excluído:");
 				clientesController.excluirCliente(scanner.nextLong());
