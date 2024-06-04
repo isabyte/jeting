@@ -68,13 +68,16 @@ private static Scanner scanner = new Scanner(System.in);
 			System.out.println(
 					"ID: " + cliente.getId() +
 					" - "+ cliente.getNome() +
-					" - " + cliente.getCpfCnpj() +
-					" - " + cliente.getTelefone() +
-					" - " + cliente.getEmail());
+					" - CPF/CNPJ: " + cliente.getCpfCnpj() +
+					" - Telefone: " + cliente.getTelefone() +
+					" - E-mail: " + cliente.getEmail());
 			for(EnderecosEntidades x: cliente.getEndereco()) {
 				System.out.println("Endereço: " + x.getLogradouro() +
 						", " + x.getNumero() +
-						", " + x.getBairro());
+						", " + x.getComplemento() +
+						", " + x.getBairro() +
+						". " + x.getCidade() +
+						", " + x.getEstado());
 			}
 		}
 	}

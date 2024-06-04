@@ -63,12 +63,12 @@ public class FuncoesServicos {
 
 		ServicosEntidades servicoExistente = servicosController.servicosServices.findById(id);
 		if (servicoExistente == null) {
-			System.out.println("não achou");
+			System.out.println("ID não encontrado");
 			return;
 		}
 
 		servicosController.servicosServices.deleteById(id);
-		System.out.println("excluiu");
+		System.out.println("Serviço excluído com sucesso");
 	}
 
 	private static void atualizarServico() {
@@ -78,7 +78,7 @@ public class FuncoesServicos {
 
 		ServicosEntidades clienteExistente = servicosController.servicosServices.findById(id);
 		if (clienteExistente == null) {
-			System.out.println("não achou");
+			System.out.println("ID não encontrado");
 			return;
 		}
 
