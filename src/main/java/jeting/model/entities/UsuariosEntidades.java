@@ -11,10 +11,10 @@ public class UsuariosEntidades {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Long id;
 	
-	@Column
+	@Column(nullable = false)
 	String login;
 	
-	@Column
+	@Column(nullable = false)
 	String senha;
 	
 	public UsuariosEntidades() {
