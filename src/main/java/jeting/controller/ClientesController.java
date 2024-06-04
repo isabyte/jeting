@@ -19,7 +19,7 @@ public class ClientesController {
 	public ClientesEntidades cadastrarCliente(ClientesDTO clientesDTO) {
 		ClientesEntidades novoCliente = new ClientesEntidades();
 		novoCliente.setNome(clientesDTO.getNome());
-		novoCliente.setCpfCnpj(clientesDTO.getCpf_cnpj());
+		novoCliente.setCpfCnpj(clientesDTO.getCpfCnpj());
 		novoCliente.setTelefone(clientesDTO.getTelefone());
 		novoCliente.setEmail(clientesDTO.getEmail());
 		novoCliente.setEndereco(clientesDTO.getEndereco());

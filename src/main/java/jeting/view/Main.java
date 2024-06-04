@@ -12,15 +12,16 @@ import jeting.model.services.ClientesServices;
 import jeting.model.services.EnderecosServices;
 
 public class Main {
+	
+	private static Scanner scanner = new Scanner(System.in);
+	
+	private static ClientesServices clientesServices = new ClientesServices();
+	private static ClientesController clientesController = new ClientesController(clientesServices);
+	private static EnderecosServices enderecosServices = new EnderecosServices();
+	private static EnderecosController enderecosController = new EnderecosController(enderecosServices);
 
 	public static void main(String[] args) {
-		Scanner scanner = new Scanner(System.in);
 		boolean menu = true;
-		
-		ClientesServices clientesServices = new ClientesServices();
-		ClientesController clientesController = new ClientesController(clientesServices);
-		EnderecosServices enderecosServices = new EnderecosServices();
-		EnderecosController enderecosController = new EnderecosController(enderecosServices);
 		
 		while(menu) {
 			System.out.println("Bem-vindo. Escolha uma opção:");
@@ -64,7 +65,7 @@ public class Main {
             	clientesDTO.setNome(scanner.nextLine());
             	
             	System.out.println("CPF/CNPJ do cliente:");
-            	clientesDTO.setCpf_cnpj(scanner.nextLine());
+            	clientesDTO.setCpfCnpj(scanner.nextLine());
             	
             	System.out.println("Telefone do cliente:");
             	clientesDTO.setTelefone(scanner.nextLine());
@@ -116,6 +117,8 @@ public class Main {
             	break;
 			case 4:
 				System.out.println("-- Atualizar cliente --");
+				System.out.println("Digite o ID do cliente a ser atualizado:");
+				atualizarCliente(scanner.nextLong());
 				break;
 			case 5:
 				System.out.println("-- Excluir cliente --");
@@ -130,7 +133,43 @@ public class Main {
 					System.out.println("Opção inválida. Tente novamente.");
 			}
 		}
-		scanner.close();
 	}
+	
+	   private static void atualizarCliente(Long id) {
 
+	        ClientesEntidades clienteExistente = clientesController.clientesServices.findById(id);
+	        if (clienteExistente == null) {
+	            System.out.println("Cliente não encontrado");
+	            return;
+	        }
+
+	        ClientesDTO clientesDTO = new ClientesDTO();
+
+	        scanner.nextLine();
+	        System.out.print("Novo nome: ");
+	        clientesDTO.setNome(scanner.nextLine());
+
+	        System.out.print("Novo CPF/CNPJ: ");
+	        clientesDTO.setCpfCnpj(scanner.nextLine());
+
+	        System.out.print("Novo e-mail: ");
+	        clientesDTO.setEmail(scanner.nextLine());
+
+	        System.out.print("Novo telefone: ");
+	        clientesDTO.setTelefone(scanner.nextLine());
+
+	        ClientesEntidades clienteAtualizado = new ClientesEntidades();
+	        clienteAtualizado.setId(id);
+	        clienteAtualizado.setNome(clientesDTO.getNome());
+	        clienteAtualizado.setCpfCnpj(clientesDTO.getCpfCnpj());
+	        clienteAtualizado.setEmail(clientesDTO.getEmail());
+	        clienteAtualizado.setTelefone(clientesDTO.getTelefone());
+
+	        clienteAtualizado = clientesController.clientesServices.atualizarCliente(clienteAtualizado);
+	        if (clienteAtualizado != null) {
+	            System.out.println("Cliente atualizado com sucesso");
+	        } else {
+	            System.out.println("Erro ao atualizar");
+	        }
+	    }	   
 }
