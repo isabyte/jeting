@@ -1,8 +1,20 @@
 package jeting.model.entities;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 public class UsuariosEntidades {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Long id;
+	
+	@Column
 	String login;
+	
+	@Column
 	String senha;
 	
 	public UsuariosEntidades() {

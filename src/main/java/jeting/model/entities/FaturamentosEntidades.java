@@ -2,10 +2,24 @@ package jeting.model.entities;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 public class FaturamentosEntidades {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Long id;
+	
+	@Column(name="data_pagamento")
 	Date dataPagamento;
+	
+	@Column
 	Float valor;
+	
+	@Column(name="status_pagamento")
 	boolean statusPagamento;
 	
 	public FaturamentosEntidades() {
