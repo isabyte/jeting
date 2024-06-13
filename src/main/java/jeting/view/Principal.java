@@ -1,7 +1,6 @@
 package jeting.view;
 
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -11,7 +10,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JSeparator;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.JLabel;
+import javax.swing.JDesktopPane;
 
 public class Principal extends JFrame {
 
@@ -41,6 +40,16 @@ public class Principal extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		
+		// Inicialize o contentPane antes de tentar adicionar componentes a ele
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JDesktopPane desktopPane = new JDesktopPane();
+		desktopPane.setBounds(0, 6, 444, 238);
+		contentPane.add(desktopPane);
+		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
@@ -56,6 +65,9 @@ public class Principal extends JFrame {
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Cadastrar cliente");
 		mntmNewMenuItem_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				ListarClientes lista = new ListarClientes();
+				desktopPane.add(lista);
+				lista.setVisible(true);
 			}
 		});
 		mnNewMenu.add(mntmNewMenuItem_1);
@@ -95,10 +107,5 @@ public class Principal extends JFrame {
 		
 		JMenuItem mntmNewMenuItem_8 = new JMenuItem("Sair");
 		mnNewMenu_2.add(mntmNewMenuItem_8);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-
-		setContentPane(contentPane);
 	}
-
 }

@@ -18,6 +18,7 @@ public class ListarClientes extends JInternalFrame {
 			public void run() {
 				try {
 					ListarClientes frame = new ListarClientes();
+					frame.setSize(600, 400);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -30,12 +31,14 @@ public class ListarClientes extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public ListarClientes() {
+		setClosable(true);
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(null);
 		
 		table = new JTable();
-		table.setBounds(49, 28, 289, 189);
+		table.setBounds(6, 6, 264, 142);
 		getContentPane().add(table);
+		setSize(300, 200);
 
 	}
 }
