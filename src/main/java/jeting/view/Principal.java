@@ -25,6 +25,7 @@ public class Principal extends JFrame {
 			public void run() {
 				try {
 					Principal frame = new Principal();
+					frame.setSize(1000,1000);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -38,7 +39,7 @@ public class Principal extends JFrame {
 	 */
 	public Principal() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 817, 734);
 		
 		// Inicialize o contentPane antes de tentar adicionar componentes a ele
 		contentPane = new JPanel();
@@ -47,7 +48,7 @@ public class Principal extends JFrame {
 		contentPane.setLayout(null);
 		
 		JDesktopPane desktopPane = new JDesktopPane();
-		desktopPane.setBounds(0, 6, 444, 238);
+		desktopPane.setBounds(0, 6, 813, 669);
 		contentPane.add(desktopPane);
 		
 		JMenuBar menuBar = new JMenuBar();
