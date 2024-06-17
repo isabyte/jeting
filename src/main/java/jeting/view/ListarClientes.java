@@ -10,7 +10,6 @@ import javax.swing.table.DefaultTableModel;
 
 import jeting.controller.ClientesController;
 import jeting.model.entities.ClientesEntidades;
-import jeting.model.entities.EnderecosEntidades;
 import jeting.model.services.ClientesServices;
 
 public class ListarClientes extends JInternalFrame {

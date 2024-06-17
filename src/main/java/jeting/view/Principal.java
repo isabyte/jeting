@@ -39,7 +39,7 @@ public class Principal extends JFrame {
 	 */
 	public Principal() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 817, 734);
+		setBounds(64, 20, 1011, 651);
 		
 		// Inicialize o contentPane antes de tentar adicionar componentes a ele
 		contentPane = new JPanel();
@@ -48,7 +48,7 @@ public class Principal extends JFrame {
 		contentPane.setLayout(null);
 		
 		JDesktopPane desktopPane = new JDesktopPane();
-		desktopPane.setBounds(0, 6, 813, 669);
+		desktopPane.setBounds(10, 10, 932, 572);
 		contentPane.add(desktopPane);
 		
 		JMenuBar menuBar = new JMenuBar();
@@ -58,6 +58,13 @@ public class Principal extends JFrame {
 		menuBar.add(mnNewMenu);
 		
 		JMenuItem mntmNewMenuItem = new JMenuItem("Mostrar todos os clientes");
+		mntmNewMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ListarClientes lista = new ListarClientes();
+				desktopPane.add(lista);
+				lista.setVisible(true);
+			}
+		});
 		mnNewMenu.add(mntmNewMenuItem);
 		
 		JSeparator separator_1 = new JSeparator();
@@ -66,9 +73,9 @@ public class Principal extends JFrame {
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Cadastrar cliente");
 		mntmNewMenuItem_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ListarClientes lista = new ListarClientes();
-				desktopPane.add(lista);
-				lista.setVisible(true);
+				fCadastrarClientes cadastrar = new fCadastrarClientes();
+				desktopPane.add(cadastrar);
+				cadastrar.setVisible(true);
 			}
 		});
 		mnNewMenu.add(mntmNewMenuItem_1);
