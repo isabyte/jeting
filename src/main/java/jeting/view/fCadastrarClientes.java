@@ -12,19 +12,26 @@ import java.awt.Color;
 import javax.swing.JTextField;
 
 import jeting.controller.ClientesController;
+import jeting.controller.EnderecosController;
 import jeting.model.entities.ClientesEntidades;
+import jeting.model.entities.EnderecosEntidades;
 import jeting.model.services.ClientesServices;
+import jeting.model.services.EnderecosServices;
 
 import javax.swing.JButton;
 import javax.swing.JSeparator;
 import java.awt.Canvas;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 import java.awt.event.ActionEvent;
 
 public class fCadastrarClientes extends JInternalFrame {
 	
 	private static ClientesServices clientesServices = new ClientesServices();
 	private static ClientesController clientesController = new ClientesController(clientesServices);
+	private static EnderecosServices enderecosServices = new EnderecosServices();
+	private static EnderecosController enderecosController = new EnderecosController(enderecosServices);
 
 	private static final long serialVersionUID = 1L;
 	private JTextField txtCpfCnpj;
@@ -124,30 +131,59 @@ public class fCadastrarClientes extends JInternalFrame {
 		desktopPane.add(txtTelefone);
 		
 		//BOTÕES
-		ClientesDTO clientesDTO = new ClientesDTO();
 		JButton btnSalvarCadastro = new JButton("Salvar");
 		btnSalvarCadastro.setBackground(violetColor);
 		btnSalvarCadastro.setForeground(new Color(0, 0, 0));
 		btnSalvarCadastro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			
+				ClientesDTO clientesDTO = new ClientesDTO();
+				
 				String nome = txtNome.getText();
 		        String cpfCnpj = txtCpfCnpj.getText();
 		        String email = txtEmail.getText();
 		        String telefone = txtTelefone.getText();
+		        String cep = txtCep();
+		        String logradouro = txtLogradouro();
+		        String complemento = txtCompkemento();
+		        String bairro = txtBairro();
+		        String cidade = txtCidade();
+		        String estado = txtEstado();
+		        String pais= txtPais();
+		        int numero = txtNumero.getText();
 		        
+		        
+		        //setando clientes
 		        clientesDTO.setNome(nome);
 		        clientesDTO.setCpfCnpj(cpfCnpj);
 		        clientesDTO.setEmail(email);
 		        clientesDTO.setTelefone(telefone);
+		        
+		        EnderecosDTO enderecosDTO = new EnderecosDTO();
+		        
+		        //setando endereços
+		        enderecosDTO.setCep(cep);
+		        enderecosDTO.setLogradouro(logradouro);
+		        enderecosDTO.setNumero(numero);
+		        enderecosDTO.setComplemento(complemento);
+		        enderecosDTO.setBairro(bairro);
+		        enderecosDTO.setPais(pais);
+		        enderecosDTO.setCidade(cidade);
+		        enderecosDTO.setEstado(estado);
+		        enderecosDTO.setCidade(cidade);
+		        enderecosDTO.setPais(pais);
+		        
 		        		        
 		        ClientesEntidades novoCliente = clientesController.cadastrarCliente(clientesDTO);
+		        
+		        enderecosDTO.setCliente(novoCliente);
+		        
+		        EnderecosEntidades novoEndereco = enderecosController.cadastrarEndereco(enderecosDTO);
 	            
-	            if (novoCliente != null) {
-	                JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso!");
-	            } else {
-	                JOptionPane.showMessageDialog(null, "Erro ao cadastrar cliente. Verifique os dados e tente novamente.", "Erro", JOptionPane.ERROR_MESSAGE);
-	            }
+		        List<EnderecosEntidades> listaEnderecos = new ArrayList<EnderecosEntidades>();
+				listaEnderecos.add(novoEndereco);
+				
+				novoCliente.setEndereco(listaEnderecos);
 	         
 			}
 		});
