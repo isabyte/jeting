@@ -22,8 +22,7 @@ public class EnderecosController {
 		novoEndereco.setEstado(enderecosDTO.getEstado());
 		novoEndereco.setPais(enderecosDTO.getPais());
 		novoEndereco.setCep(enderecosDTO.getCep());
-		novoEndereco.setCliente(enderecosDTO.getCliente());
-		
+		novoEndereco.setCliente(enderecosDTO.getCliente());		
 		enderecosServices.cadastrarNovoEndereco(novoEndereco);
 		
 		return novoEndereco;
