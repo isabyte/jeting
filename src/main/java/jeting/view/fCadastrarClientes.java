@@ -5,7 +5,6 @@ import java.awt.Font;
 
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.BorderFactory;
 import javax.swing.JDesktopPane;
 import java.awt.Color;
@@ -19,8 +18,6 @@ import jeting.model.services.ClientesServices;
 import jeting.model.services.EnderecosServices;
 
 import javax.swing.JButton;
-import javax.swing.JSeparator;
-import java.awt.Canvas;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
@@ -72,8 +69,8 @@ public class fCadastrarClientes extends JInternalFrame {
 		Font fonteJeting = new Font("Impact", Font.BOLD, 50);
 
 		JDesktopPane desktopPane = new JDesktopPane();
-		desktopPane.setBackground(new Color(128, 128, 128));
-		desktopPane.setBounds(0, 0, 1005, 625);
+		desktopPane.setBackground(new Color(0, 0, 0));
+		desktopPane.setBounds(10, 0, 1005, 625);
 		getContentPane().add(desktopPane);
 
 		// CORES
@@ -85,27 +82,27 @@ public class fCadastrarClientes extends JInternalFrame {
 		txtNome.setBackground(new Color(0, 0, 0));
 		txtNome.setColumns(10);
 		txtNome.setBorder(BorderFactory.createLineBorder(violetColor, 2));
-		txtNome.setBounds(16, 211, 300, 28);
+		txtNome.setBounds(14, 155, 300, 28);
 		desktopPane.add(txtNome);
 
 		JLabel lblNome = new JLabel("Nome");
 		lblNome.setForeground(new Color(255, 255, 255));
 		lblNome.setFont(new Font("SansSerif", Font.PLAIN, 18));
-		lblNome.setBounds(16, 173, 114, 28);
+		lblNome.setBounds(14, 117, 114, 28);
 		desktopPane.add(lblNome);
 
 		txtCpfCnpj = new JTextField();
 		txtCpfCnpj.setForeground(new Color(255, 255, 255));
 		txtCpfCnpj.setBackground(new Color(0, 0, 0));
 		txtCpfCnpj.setColumns(10);
-		txtCpfCnpj.setBounds(15, 284, 300, 28);
+		txtCpfCnpj.setBounds(14, 231, 300, 28);
 		txtCpfCnpj.setBorder(BorderFactory.createLineBorder(violetColor, 2));
 		desktopPane.add(txtCpfCnpj);
 
 		JLabel lblCpfCnpj = new JLabel("Cpf/Cnpj");
 		lblCpfCnpj.setForeground(new Color(255, 255, 255));
 		lblCpfCnpj.setFont(fontePadrao);
-		lblCpfCnpj.setBounds(15, 248, 114, 28);
+		lblCpfCnpj.setBounds(14, 193, 114, 28);
 		desktopPane.add(lblCpfCnpj);
 
 		txtTelefone = new JTextField();
@@ -113,19 +110,19 @@ public class fCadastrarClientes extends JInternalFrame {
 		txtTelefone.setBackground(new Color(0, 0, 0));
 		txtTelefone.setColumns(10);
 		txtTelefone.setBorder(BorderFactory.createLineBorder(violetColor, 2));
-		txtTelefone.setBounds(15, 411, 300, 28);
+		txtTelefone.setBounds(14, 386, 300, 28);
 		desktopPane.add(txtTelefone);
 
 		JLabel lblEmail = new JLabel("Email");
 		lblEmail.setForeground(new Color(255, 255, 255));
 		lblEmail.setFont(fontePadrao);
-		lblEmail.setBounds(15, 316, 114, 28);
+		lblEmail.setBounds(14, 269, 114, 28);
 		desktopPane.add(lblEmail);
 
 		JLabel lblTelefone = new JLabel("Telefone");
 		lblTelefone.setForeground(new Color(255, 255, 255));
 		lblTelefone.setFont(fontePadrao);
-		lblTelefone.setBounds(15, 382, 163, 28);
+		lblTelefone.setBounds(14, 346, 163, 28);
 		desktopPane.add(lblTelefone);
 
 		txtEmail = new JTextField();
@@ -133,111 +130,119 @@ public class fCadastrarClientes extends JInternalFrame {
 		txtEmail.setBackground(new Color(0, 0, 0));
 		txtEmail.setColumns(10);
 		txtEmail.setBorder(BorderFactory.createLineBorder(violetColor, 2));
-		txtEmail.setBounds(15, 346, 300, 28);
+		txtEmail.setBounds(14, 307, 300, 28);
 		desktopPane.add(txtEmail);
 
 		JLabel lblCep = new JLabel("CEP");
 		lblCep.setForeground(Color.WHITE);
 		lblCep.setFont(new Font("SansSerif", Font.PLAIN, 18));
-		lblCep.setBounds(378, 19, 114, 28);
+		lblCep.setBounds(378, 41, 114, 28);
 		desktopPane.add(lblCep);
 
 		txtCep = new JTextField();
 		txtCep.setForeground(Color.WHITE);
 		txtCep.setColumns(10);
 		txtCep.setBackground(Color.BLACK);
-		txtCep.setBounds(378, 48, 300, 28);
+		txtCep.setBorder(BorderFactory.createLineBorder(violetColor, 2));
+		txtCep.setBounds(378, 79, 144, 28);
 		desktopPane.add(txtCep);
 
 		JLabel lblLogradouro = new JLabel("Logradouro");
 		lblLogradouro.setForeground(Color.WHITE);
 		lblLogradouro.setFont(new Font("SansSerif", Font.PLAIN, 18));
-		lblLogradouro.setBounds(378, 85, 114, 28);
+		lblLogradouro.setBounds(378, 117, 114, 28);
 		desktopPane.add(lblLogradouro);
 
 		txtLogradouro = new JTextField();
 		txtLogradouro.setForeground(Color.WHITE);
 		txtLogradouro.setColumns(10);
 		txtLogradouro.setBackground(Color.BLACK);
-		txtLogradouro.setBounds(378, 121, 300, 28);
+		txtLogradouro.setBorder(BorderFactory.createLineBorder(violetColor, 2));
+		txtLogradouro.setBounds(378, 155, 300, 28);
 		desktopPane.add(txtLogradouro);
 
 		JLabel lblBairro = new JLabel("Bairro");
 		lblBairro.setForeground(Color.WHITE);
 		lblBairro.setFont(new Font("SansSerif", Font.PLAIN, 18));
-		lblBairro.setBounds(378, 316, 114, 28);
+		lblBairro.setBounds(378, 269, 114, 28);
 		desktopPane.add(lblBairro);
 
 		txtBairro = new JTextField();
 		txtBairro.setForeground(Color.WHITE);
 		txtBairro.setColumns(10);
 		txtBairro.setBackground(Color.BLACK);
-		txtBairro.setBounds(378, 346, 300, 28);
+		txtBairro.setBorder(BorderFactory.createLineBorder(violetColor, 2));
+		txtBairro.setBounds(378, 307, 300, 28);
 		desktopPane.add(txtBairro);
 
 		JLabel lblNumero = new JLabel("Número");
 		lblNumero.setForeground(Color.WHITE);
 		lblNumero.setFont(new Font("SansSerif", Font.PLAIN, 18));
-		lblNumero.setBounds(378, 153, 114, 28);
+		lblNumero.setBounds(534, 41, 114, 28);
 		desktopPane.add(lblNumero);
 
 		txtNumero = new JTextField();
 		txtNumero.setForeground(Color.WHITE);
 		txtNumero.setColumns(10);
 		txtNumero.setBackground(Color.BLACK);
-		txtNumero.setBounds(378, 183, 300, 28);
+		txtNumero.setBorder(BorderFactory.createLineBorder(violetColor, 2));
+		txtNumero.setBounds(534, 79, 144, 28);
 		desktopPane.add(txtNumero);
 
 		JLabel lblComplemento = new JLabel("Complemento");
 		lblComplemento.setForeground(Color.WHITE);
 		lblComplemento.setFont(new Font("SansSerif", Font.PLAIN, 18));
-		lblComplemento.setBounds(378, 219, 114, 28);
+		lblComplemento.setBounds(378, 193, 114, 28);
 		desktopPane.add(lblComplemento);
 
 		txtComplemento = new JTextField();
 		txtComplemento.setForeground(Color.WHITE);
 		txtComplemento.setColumns(10);
 		txtComplemento.setBackground(Color.BLACK);
-		txtComplemento.setBounds(378, 248, 300, 28);
+		txtComplemento.setBorder(BorderFactory.createLineBorder(violetColor, 2));
+		txtComplemento.setBounds(378, 231, 300, 28);
 		desktopPane.add(txtComplemento);
 
 		JLabel lblCidade = new JLabel("Cidade");
 		lblCidade.setForeground(Color.WHITE);
 		lblCidade.setFont(new Font("SansSerif", Font.PLAIN, 18));
-		lblCidade.setBounds(378, 382, 114, 28);
+		lblCidade.setBounds(378, 356, 114, 28);
 		desktopPane.add(lblCidade);
 
 		txtCidade = new JTextField();
 		txtCidade.setForeground(Color.WHITE);
 		txtCidade.setColumns(10);
 		txtCidade.setBackground(Color.BLACK);
-		txtCidade.setBounds(378, 415, 300, 28);
+		txtCidade.setBorder(BorderFactory.createLineBorder(violetColor, 2));
+		txtCidade.setBounds(378, 386, 144, 28);
 		desktopPane.add(txtCidade);
 
 		JLabel lblEstado = new JLabel("Estado");
 		lblEstado.setForeground(Color.WHITE);
 		lblEstado.setFont(new Font("SansSerif", Font.PLAIN, 18));
-		lblEstado.setBounds(378, 469, 114, 28);
+		lblEstado.setBounds(534, 356, 114, 28);
 		desktopPane.add(lblEstado);
 
 		txtEstado = new JTextField();
 		txtEstado.setForeground(Color.WHITE);
 		txtEstado.setColumns(10);
 		txtEstado.setBackground(Color.BLACK);
-		txtEstado.setBounds(378, 495, 300, 28);
+		txtEstado.setBorder(BorderFactory.createLineBorder(violetColor, 2));
+		txtEstado.setBounds(534, 386, 144, 28);
 		desktopPane.add(txtEstado);
 
 		JLabel lblPais = new JLabel("País");
 		lblPais.setForeground(Color.WHITE);
 		lblPais.setFont(new Font("SansSerif", Font.PLAIN, 18));
-		lblPais.setBounds(16, 469, 114, 28);
+		lblPais.setBounds(14, 424, 114, 28);
 		desktopPane.add(lblPais);
 
 		txtPais = new JTextField();
 		txtPais.setForeground(Color.WHITE);
 		txtPais.setColumns(10);
 		txtPais.setBackground(Color.BLACK);
-		txtPais.setBounds(16, 495, 300, 28);
+		txtPais.setBorder(BorderFactory.createLineBorder(violetColor, 2));
+		txtPais.setBounds(14, 462, 300, 28);
 		desktopPane.add(txtPais);
 
 		// BOTÕES
@@ -283,27 +288,24 @@ public class fCadastrarClientes extends JInternalFrame {
 				enderecosDTO.setPais(pais);
 
 				EnderecosEntidades novoEndereco = enderecosController.cadastrarEndereco(enderecosDTO);
-				
+
 				ClientesEntidades novoCliente = clientesController.cadastrarCliente(clientesDTO);
 
-
 				enderecosDTO.setCliente(novoCliente);
-
 
 				List<EnderecosEntidades> listaEnderecos = new ArrayList<EnderecosEntidades>();
 				listaEnderecos.add(novoEndereco);
 
 				novoCliente.setEndereco(listaEnderecos);
-
 			}
 		});
-		btnSalvarCadastro.setBounds(448, 451, 114, 28);
+		btnSalvarCadastro.setBounds(391, 462, 114, 28);
 		btnSalvarCadastro.setFont(fontePadrao);
 		desktopPane.add(btnSalvarCadastro);
 
 		JButton btnCancelar = new JButton("Cancelar");
 		btnCancelar.setBackground(violetColor);
-		btnCancelar.setBounds(581, 451, 114, 28);
+		btnCancelar.setBounds(564, 462, 114, 28);
 		btnCancelar.setFont(fontePadrao);
 		desktopPane.add(btnCancelar);
 
@@ -349,14 +351,9 @@ public class fCadastrarClientes extends JInternalFrame {
 		JLabel lblCadastro = new JLabel("Cadastro de Clientes");
 		lblCadastro.setForeground(new Color(255, 255, 255));
 		lblCadastro.setBackground(new Color(255, 255, 255));
-		lblCadastro.setBounds(48, 93, 187, 78);
+		lblCadastro.setBounds(112, 41, 187, 78);
 		lblCadastro.setFont(fontePadrao);
 		desktopPane.add(lblCadastro);
-
-		Canvas canvas = new Canvas();
-		canvas.setBackground(new Color(255, 255, 255));
-		canvas.setBounds(10, 95, 247, 5);
-		desktopPane.add(canvas);
 
 	}
 }
