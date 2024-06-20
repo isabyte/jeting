@@ -9,13 +9,13 @@ import jeting.model.services.ClientesServices;
 import jeting.view.ClientesDTO;
 
 public class ClientesController {
-	
+
 	public ClientesServices clientesServices;
-	
+
 	public ClientesController(ClientesServices clientesServices) {
 		this.clientesServices = clientesServices;
 	}
-	
+
 	public ClientesEntidades cadastrarCliente(ClientesDTO clientesDTO) {
 		ClientesEntidades novoCliente = new ClientesEntidades();
 		novoCliente.setNome(clientesDTO.getNome());
@@ -25,24 +25,24 @@ public class ClientesController {
 		novoCliente.setEndereco(clientesDTO.getEndereco());
 		return clientesServices.cadastrarNovoCliente(novoCliente);
 	}
-	
+
 	public ClientesEntidades atualizarCliente(ClientesDTO clientesDTO, Long id) {
-		 ClientesEntidades clienteAtualizado = new ClientesEntidades();
-	        clienteAtualizado.setId(id);
-	        clienteAtualizado.setNome(clientesDTO.getNome());
-	        clienteAtualizado.setCpfCnpj(clientesDTO.getCpfCnpj());
-	        clienteAtualizado.setEmail(clientesDTO.getEmail());
-	        clienteAtualizado.setTelefone(clientesDTO.getTelefone());
-	        return clientesServices.atualizarCliente(clienteAtualizado);
+		ClientesEntidades clienteAtualizado = new ClientesEntidades();
+		clienteAtualizado.setId(id);
+		clienteAtualizado.setNome(clientesDTO.getNome());
+		clienteAtualizado.setCpfCnpj(clientesDTO.getCpfCnpj());
+		clienteAtualizado.setEmail(clientesDTO.getEmail());
+		clienteAtualizado.setTelefone(clientesDTO.getTelefone());
+		return clientesServices.atualizarCliente(clienteAtualizado);
 	}
-	
+
 	public List<ClientesEntidades> findAll() {
 		return clientesServices.findAll();
 	}
-	
+
 	public void excluirCliente(Long id) {
 		ClientesEntidades clienteAExcluir = clientesServices.findById(id);
-		if(clienteAExcluir == null) {
+		if (clienteAExcluir == null) {
 			System.out.println("Cliente não encontrado");
 			return;
 		}

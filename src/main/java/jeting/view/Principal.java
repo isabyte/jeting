@@ -83,6 +83,13 @@ public class Principal extends JFrame {
 		mnNewMenu.add(mntmNewMenuItem_1);
 		
 		JMenuItem mntmNewMenuItem_3 = new JMenuItem("Atualizar cliente");
+		mntmNewMenuItem_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JIFatualizarClientes atualizar = new JIFatualizarClientes();
+				desktopPane.add(atualizar);
+				atualizar.setVisible(true);
+			}
+		});
 		mnNewMenu.add(mntmNewMenuItem_3);
 		
 		JSeparator separator = new JSeparator();
