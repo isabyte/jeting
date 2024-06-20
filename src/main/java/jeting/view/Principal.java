@@ -41,7 +41,7 @@ public class Principal extends JFrame {
 	 */
 	public Principal() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(64, 20, 1011, 651);
+		setBounds(64, 20, 953, 740);
 		
 		// Inicialize o contentPane antes de tentar adicionar componentes a ele
 		contentPane = new JPanel();
@@ -50,7 +50,7 @@ public class Principal extends JFrame {
 		contentPane.setLayout(null);
 		
 		JDesktopPane desktopPane = new JDesktopPane();
-		desktopPane.setBounds(10, 10, 932, 572);
+		desktopPane.setBounds(10, 10, 932, 704);
 		contentPane.add(desktopPane);
 		
 		JMenuBar menuBar = new JMenuBar();
@@ -62,7 +62,7 @@ public class Principal extends JFrame {
 		JMenuItem mntmNewMenuItem = new JMenuItem("Mostrar todos os clientes");
 		mntmNewMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ListarClientes lista = new ListarClientes();
+				JIFlistarClientes lista = new JIFlistarClientes();
 				desktopPane.add(lista);
 				lista.setVisible(true);
 			}
@@ -75,7 +75,7 @@ public class Principal extends JFrame {
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Cadastrar cliente");
 		mntmNewMenuItem_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				fCadastrarClientes cadastrar = new fCadastrarClientes();
+				JIFcadastrarClientes cadastrar = new JIFcadastrarClientes();
 				desktopPane.add(cadastrar);
 				cadastrar.setVisible(true);
 			}
@@ -89,6 +89,13 @@ public class Principal extends JFrame {
 		mnNewMenu.add(separator);
 		
 		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Excluir cliente");
+		mntmNewMenuItem_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JIFexcluirCliente excluir = new JIFexcluirCliente();
+				desktopPane.add(excluir);
+				excluir.setVisible(true);
+			}
+		});
 		mnNewMenu.add(mntmNewMenuItem_2);
 		
 		JMenu mnNewMenu_1 = new JMenu("Serviços");

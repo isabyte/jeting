@@ -26,6 +26,16 @@ public class ClientesController {
 		return clientesServices.cadastrarNovoCliente(novoCliente);
 	}
 	
+	public ClientesEntidades atualizarCliente(ClientesDTO clientesDTO, Long id) {
+		 ClientesEntidades clienteAtualizado = new ClientesEntidades();
+	        clienteAtualizado.setId(id);
+	        clienteAtualizado.setNome(clientesDTO.getNome());
+	        clienteAtualizado.setCpfCnpj(clientesDTO.getCpfCnpj());
+	        clienteAtualizado.setEmail(clientesDTO.getEmail());
+	        clienteAtualizado.setTelefone(clientesDTO.getTelefone());
+	        return clientesServices.atualizarCliente(clienteAtualizado);
+	}
+	
 	public List<ClientesEntidades> findAll() {
 		return clientesServices.findAll();
 	}

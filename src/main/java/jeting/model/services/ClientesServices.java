@@ -16,7 +16,8 @@ public class ClientesServices {
 	}
 	
 	public ClientesEntidades atualizarCliente(ClientesEntidades cliente) {
-		ClientesEntidades clienteExistente = (ClientesEntidades) clientesRepository.findById(cliente.getId());
+		return (ClientesEntidades) clientesRepository.updateById(cliente);
+		/*ClientesEntidades clienteExistente = (ClientesEntidades) clientesRepository.findById(cliente.getId());
 		if(clienteExistente == null) {
 			return null;
 		}
@@ -25,7 +26,8 @@ public class ClientesServices {
 		clienteExistente.setTelefone(cliente.getTelefone());
 		clienteExistente.setEmail(cliente.getEmail());
 		return cliente;
-		}
+		}*/
+	}
 	
 	public ClientesEntidades findById(Long id) {
 		return (ClientesEntidades) clientesRepository.findById(id);
