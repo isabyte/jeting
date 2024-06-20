@@ -115,6 +115,13 @@ public class Principal extends JFrame {
 		mnNewMenu_1.add(separator_2);
 		
 		JMenuItem mntmNewMenuItem_5 = new JMenuItem("Novo serviço");
+		mntmNewMenuItem_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JIFNovoServico novoServico = new JIFNovoServico();
+				desktopPane.add(novoServico);
+				novoServico.setVisible(true);
+			}
+		});
 		mnNewMenu_1.add(mntmNewMenuItem_5);
 		
 		JMenuItem mntmNewMenuItem_6 = new JMenuItem("Atualizar serviço");
