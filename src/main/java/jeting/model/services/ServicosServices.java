@@ -14,7 +14,8 @@ public class ServicosServices {
 	}
 	
 	public ServicosEntidades atualizarServico(ServicosEntidades servico) {
-		System.out.println("entrou sem services");
+		return (ServicosEntidades) servicosRepository.updateById(servico);
+		/*
 		ServicosEntidades servicoExistente = (ServicosEntidades) servicosRepository.findById(servico.getId());
 		if(servicoExistente == null) {
 			return null;
@@ -25,6 +26,7 @@ public class ServicosServices {
 		servicoExistente.setValor(servico.getValor());
 		System.out.println("setou em servico existente");
 		return servico;
+		*/
 		}
 	
 	public ServicosEntidades findById(Long id) {

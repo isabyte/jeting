@@ -215,7 +215,7 @@ public class JIFAtualizarServico extends JInternalFrame {
 				servicosDTO.setDescricao(descricaoAtualizada);
 				servicosDTO.setValor(valorAtualizado);
 				
-				ServicosEntidades servicoAtualizado = servicosController.atualizarServicoById(ServicoToUpdate, servicosDTO);
+				ServicosEntidades servicoAtualizado = servicosController.atualizarServico(servicosDTO, ServicoToUpdate);
 				
 				servicoAtualizado = servicosController.servicosServices.atualizarServico(servicoAtualizado);
 				

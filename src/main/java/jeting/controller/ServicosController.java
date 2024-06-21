@@ -22,20 +22,14 @@ public ServicosServices servicosServices;
 		return servicosServices.cadastrarNovoServico(novoServico);
 	}
 	
-	public ServicosEntidades atualizarServicoById(Long id, ServicosDTO servicosDTO) {
-		ServicosEntidades servicoExistente = servicosServices.findById(id);
-		if (servicoExistente == null) {
-			System.out.println("Serviço não encontrado");
-			return null;
-		}
-		
+	public ServicosEntidades atualizarServico(ServicosDTO servicosDTO, Long id) {
 		ServicosEntidades servicoAtualizado = new ServicosEntidades();
-		
+		servicoAtualizado.setId(id);
 		servicoAtualizado.setNomeServico(servicosDTO.getNomeServico());
 		servicoAtualizado.setDescricao(servicosDTO.getDescricao());
 		servicoAtualizado.setValor(servicosDTO.getValor());
-		
 		return servicosServices.atualizarServico(servicoAtualizado);
+
 	}
 	
 	public List<ServicosEntidades> findAll() {
