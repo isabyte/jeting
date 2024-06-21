@@ -7,6 +7,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JSeparator;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -151,6 +152,15 @@ public class Principal extends JFrame {
 		menuBar.add(mnNewMenu_2);
 		
 		JMenuItem mntmNewMenuItem_8 = new JMenuItem("Sair");
+		mntmNewMenuItem_8.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int dialogButton = JOptionPane.showConfirmDialog (null, "Tem certeza que deseja sair?", "Sair", JOptionPane.YES_NO_OPTION);
+
+				if(dialogButton == JOptionPane.YES_OPTION) {
+					dispose();
+				}
+			}
+		});
 		mnNewMenu_2.add(mntmNewMenuItem_8);
 	}
 }
