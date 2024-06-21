@@ -110,6 +110,13 @@ public class Principal extends JFrame {
 		menuBar.add(mnNewMenu_1);
 		
 		JMenuItem mntmNewMenuItem_4 = new JMenuItem("Serviços oferecidos");
+		mntmNewMenuItem_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JIFListarServicos listarServicos = new JIFListarServicos();
+				desktopPane.add(listarServicos);
+				listarServicos.setVisible(true);
+			}
+		});
 		mnNewMenu_1.add(mntmNewMenuItem_4);
 		
 		JSeparator separator_2 = new JSeparator();
