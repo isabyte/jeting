@@ -40,7 +40,7 @@ public class JIFGrafico extends JInternalFrame {
 	 */
 	public JIFGrafico() {
 		setClosable(true);
-		setBounds(0, 0, 800, 650);
+		setSize(859, 547);
 		getContentPane().setLayout(new BorderLayout()); // new
 		
 		// panel para os dados

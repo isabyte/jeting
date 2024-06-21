@@ -177,6 +177,19 @@ public class Principal extends JFrame {
 				}
 			}
 		});
+		
+		JMenuItem mntmNewMenuItem_9 = new JMenuItem("Gráfico de estatísticas");
+		mntmNewMenuItem_9.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JIFGrafico grafico = new JIFGrafico();
+				desktopPane.add(grafico);
+				grafico.setVisible(true);
+			}
+		});
+		mnNewMenu_2.add(mntmNewMenuItem_9);
+		
+		JSeparator separator_4 = new JSeparator();
+		mnNewMenu_2.add(separator_4);
 		mnNewMenu_2.add(mntmNewMenuItem_8);
 	}
 }
