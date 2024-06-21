@@ -12,11 +12,8 @@ import java.awt.Font;
 import javax.swing.JTextField;
 
 import jeting.controller.ServicosController;
-import jeting.model.entities.ServicosEntidades;
 import jeting.model.services.ServicosServices;
 
-import javax.swing.JTextArea;
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -101,12 +98,12 @@ public class JIFNovoServico extends JInternalFrame {
 		lblG.setBounds(200, 9, 60, 83);
 		desktopPane.add(lblG);
 		
-		JLabel lblNovoServio = new JLabel("Novo serviço");
-		lblNovoServio.setForeground(Color.WHITE);
-		lblNovoServio.setFont(new Font("Dialog", Font.PLAIN, 18));
-		lblNovoServio.setBackground(Color.WHITE);
-		lblNovoServio.setBounds(115, 47, 118, 78);
-		desktopPane.add(lblNovoServio);
+		JLabel lblNovoServico = new JLabel("Novo serviço");
+		lblNovoServico.setForeground(Color.WHITE);
+		lblNovoServico.setFont(new Font("Dialog", Font.PLAIN, 18));
+		lblNovoServico.setBackground(Color.WHITE);
+		lblNovoServico.setBounds(115, 47, 118, 78);
+		desktopPane.add(lblNovoServico);
 		
 		// CAMPOS
 		JLabel lblNomeServico = new JLabel("Nome do serviço");

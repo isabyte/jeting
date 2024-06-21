@@ -14,13 +14,16 @@ public class ServicosServices {
 	}
 	
 	public ServicosEntidades atualizarServico(ServicosEntidades servico) {
+		System.out.println("entrou sem services");
 		ServicosEntidades servicoExistente = (ServicosEntidades) servicosRepository.findById(servico.getId());
 		if(servicoExistente == null) {
 			return null;
 		}
+		System.out.println("servico existente diferente de null");
 		servicoExistente.setNomeServico (servico.getNomeServico());
 		servicoExistente.setDescricao(servico.getDescricao());
 		servicoExistente.setValor(servico.getValor());
+		System.out.println("setou em servico existente");
 		return servico;
 		}
 	

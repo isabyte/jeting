@@ -125,12 +125,26 @@ public class Principal extends JFrame {
 		mnNewMenu_1.add(mntmNewMenuItem_5);
 		
 		JMenuItem mntmNewMenuItem_6 = new JMenuItem("Atualizar serviço");
+		mntmNewMenuItem_6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JIFAtualizarServico atualizarServico = new JIFAtualizarServico();
+				desktopPane.add(atualizarServico);
+				atualizarServico.setVisible(true);
+			}
+		});
 		mnNewMenu_1.add(mntmNewMenuItem_6);
 		
 		JSeparator separator_3 = new JSeparator();
 		mnNewMenu_1.add(separator_3);
 		
 		JMenuItem mntmNewMenuItem_7 = new JMenuItem("Excluir serviço");
+		mntmNewMenuItem_7.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JIFExcluirServico excluirServico = new JIFExcluirServico();
+				desktopPane.add(excluirServico);
+				excluirServico.setVisible(true);
+			}
+		});
 		mnNewMenu_1.add(mntmNewMenuItem_7);
 		
 		JMenu mnNewMenu_2 = new JMenu("Configurações");
