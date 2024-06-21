@@ -1,10 +1,15 @@
 package jeting.view;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
 import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -20,6 +25,9 @@ import jeting.model.services.ServicosServices;
 
 public class JIFGrafico extends JInternalFrame {
 	
+	private JLabel quantClientesLabel;
+	private JLabel quantServicosLabel;
+	
 	private static ClientesServices clientesServices = new ClientesServices();
 	private static ClientesController clientesController = new ClientesController(clientesServices);
 	private static ServicosServices servicosServices = new ServicosServices();
@@ -31,14 +39,40 @@ public class JIFGrafico extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public JIFGrafico() {
+		setClosable(true);
 		setBounds(0, 0, 800, 650);
+		getContentPane().setLayout(new BorderLayout()); // new
+		
+		// panel para os dados
+		JPanel dataPanel = new JPanel(new GridLayout(4, 2, 10, 10));
+		quantClientesLabel = new JLabel(String.valueOf(clientesController.countClientes()));
+		quantServicosLabel = new JLabel(String.valueOf(servicosController.countServicos()));
+		
+		// estilizando os títulos
+		Font titleFont = new Font(Font.SANS_SERIF, Font.BOLD, 12);
+		
+		JLabel clientesTitleLabel = new JLabel("Total de clientes:");
+		clientesTitleLabel.setFont(titleFont);
+		JLabel servicosTitleLabel = new JLabel("Total de serviços");
+		servicosTitleLabel.setFont(titleFont);
+		
+		// add os componentes
+		dataPanel.add(clientesTitleLabel); // título
+		dataPanel.add(quantClientesLabel); // valor
+		dataPanel.add(servicosTitleLabel);
+		dataPanel.add(quantServicosLabel);
+		
+		// dados vão ficar do lado esquerdo
+		getContentPane().add(dataPanel, BorderLayout.WEST);
+		
+		// cria gráfico
 		CategoryDataset dataset = createDataset();
 		JFreeChart chart = createChart(dataset);
 		
 		ChartPanel chartPanel = new ChartPanel(chart);
 		chartPanel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
 		chartPanel.setBackground(Color.WHITE);
-		add(chartPanel);
+		getContentPane().add(chartPanel, BorderLayout.CENTER);
 		
 		pack();
 		setTitle("Dados");
