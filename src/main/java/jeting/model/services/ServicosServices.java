@@ -40,5 +40,9 @@ public class ServicosServices {
 	public List<ServicosEntidades> findAll() {
 		return servicosRepository.findAll();
 	}
+	
+	public Long countServicos() {
+		return servicosRepository.countServicos();
+	}
 
 }
