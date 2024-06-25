@@ -40,5 +40,9 @@ public class ClientesServices {
 	public List<ClientesEntidades> findAll() {
 		return clientesRepository.findAll();
 	}
+	
+	public Long countClientes() {
+		return clientesRepository.countClientes();
+	}
 
 }

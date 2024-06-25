@@ -12,6 +12,7 @@ import javax.swing.JSeparator;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JDesktopPane;
+import java.awt.Color;
 
 public class Principal extends JFrame {
 
@@ -50,9 +51,17 @@ public class Principal extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		// Desktop pane
 		JDesktopPane desktopPane = new JDesktopPane();
+		desktopPane.setBackground(new Color(237, 237, 238));
 		desktopPane.setBounds(10, 10, 932, 704);
 		contentPane.add(desktopPane);
+		
+		// Gráfico
+		JIFGrafico grafico = new JIFGrafico();
+		grafico.setSize(800, 650);
+		desktopPane.add(grafico);
+		grafico.setVisible(true);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -168,6 +177,19 @@ public class Principal extends JFrame {
 				}
 			}
 		});
+		
+		JMenuItem mntmNewMenuItem_9 = new JMenuItem("Gráfico de estatísticas");
+		mntmNewMenuItem_9.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JIFGrafico grafico = new JIFGrafico();
+				desktopPane.add(grafico);
+				grafico.setVisible(true);
+			}
+		});
+		mnNewMenu_2.add(mntmNewMenuItem_9);
+		
+		JSeparator separator_4 = new JSeparator();
+		mnNewMenu_2.add(separator_4);
 		mnNewMenu_2.add(mntmNewMenuItem_8);
 	}
 }

@@ -36,6 +36,10 @@ public ServicosServices servicosServices;
 		return servicosServices.findAll();
 	}
 	
+	public Long countServicos() {
+		return servicosServices.countServicos();
+	}
+	
 	public void excluirServico(Long id) {
 		ServicosEntidades servicoAExcluir = servicosServices.findById(id);
 		if(servicoAExcluir == null) {

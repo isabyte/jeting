@@ -39,6 +39,10 @@ public class ClientesController {
 	public List<ClientesEntidades> findAll() {
 		return clientesServices.findAll();
 	}
+	
+	public Long countClientes() {
+		return clientesServices.countClientes();
+	}
 
 	public void excluirCliente(Long id) {
 		ClientesEntidades clienteAExcluir = clientesServices.findById(id);
