@@ -55,7 +55,7 @@ public class JIFListarServicos extends JInternalFrame {
 		scrollPane.setViewportView(table);
 
 		modelo = new DefaultTableModel(new Object[][] {},
-				new String[] { "Nome", "Descrição", "Valor" });
+				new String[] { "ID", "Nome", "Descrição", "Valor" });
 		table.setModel(modelo);
 		
 		preencherTabela();
@@ -67,7 +67,7 @@ public class JIFListarServicos extends JInternalFrame {
 		List<ServicosEntidades> servicos = servicosController.findAll();
 
 		for (ServicosEntidades servico : servicos) {
-			modelo.addRow(new Object[] { servico.getNomeServico(), servico.getDescricao(), servico.getValor() });
+			modelo.addRow(new Object[] { servico.getId(), servico.getNomeServico(), servico.getDescricao(), servico.getValor() });
 		}
 	}
 }

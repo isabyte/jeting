@@ -53,7 +53,7 @@ public class JIFlistarClientes extends JInternalFrame {
 		scrollPane.setViewportView(table);
 
 		modelo = new DefaultTableModel(new Object[][] {},
-				new String[] { "Nome", "CPF / CNPJ", "Telefone", "Email", "Endereço" });
+				new String[] { "ID", "Nome", "CPF / CNPJ", "Telefone", "Email", "Endereço" });
 		table.setModel(modelo);
 
 		preencherTabela();
@@ -73,7 +73,7 @@ public class JIFlistarClientes extends JInternalFrame {
 			 * .append(x.getBairro()).append(". ") .append(x.getCidade()).append(", ")
 			 * .append(x.getEstado()); }
 			 */
-			modelo.addRow(new Object[] { cliente.getNome(), cliente.getCpfCnpj(), cliente.getTelefone(),
+			modelo.addRow(new Object[] { cliente.getId(), cliente.getNome(), cliente.getCpfCnpj(), cliente.getTelefone(),
 					cliente.getEmail(), endereco.toString() });
 		}
 	}
