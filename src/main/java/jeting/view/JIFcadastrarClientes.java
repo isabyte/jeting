@@ -13,6 +13,7 @@ import javax.swing.JButton;
 import javax.swing.JDesktopPane;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import jeting.controller.ClientesController;
@@ -296,6 +297,12 @@ public class JIFcadastrarClientes extends JInternalFrame {
 				listaEnderecos.add(novoEndereco);
 
 				novoCliente.setEndereco(listaEnderecos);
+				
+				  if (novoCliente != null && novoEndereco != null) {
+			            JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso!");
+			        } else {
+			            JOptionPane.showMessageDialog(null, "Erro ao cadastrar.");
+			        }
 			}
 		});
 		btnSalvarCadastro.setBounds(391, 462, 114, 28);
@@ -303,6 +310,16 @@ public class JIFcadastrarClientes extends JInternalFrame {
 		desktopPane.add(btnSalvarCadastro);
 
 		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int dialogButton = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja cancelar? Todos os dados serão perdidos.", "Cancelar",
+						JOptionPane.YES_NO_OPTION);
+
+				if (dialogButton == JOptionPane.YES_OPTION) {
+					dispose();
+				}
+			}
+		});
 		btnCancelar.setBackground(violetColor);
 		btnCancelar.setBounds(564, 462, 114, 28);
 		btnCancelar.setFont(fontePadrao);

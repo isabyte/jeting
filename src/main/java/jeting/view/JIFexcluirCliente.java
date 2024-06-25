@@ -6,6 +6,7 @@ import java.awt.Font;
 
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import jeting.controller.ClientesController;
@@ -64,7 +65,7 @@ public class JIFexcluirCliente extends JInternalFrame {
 		Font fonteJeting = new Font("Impact", Font.BOLD, 78);
 		
 		// LABELS 
-		JLabel lblExcluirID = new JLabel(" ID do Clientes a ser excluído");
+		JLabel lblExcluirID = new JLabel(" ID do Cliente a ser excluído");
 		lblExcluirID.setForeground(new Color(255, 255, 255));
 		lblExcluirID.setFont(new Font("SansSerif", Font.PLAIN, 18));
 		lblExcluirID.setBounds(43, 207, 259, 28);
@@ -128,13 +129,13 @@ public class JIFexcluirCliente extends JInternalFrame {
 				JLabel lblCliente = new JLabel("---- Cliente Encontrado ----");
 				lblCliente.setForeground(Color.WHITE);
 				lblCliente.setFont(new Font("SansSerif", Font.PLAIN, 18));
-				lblCliente.setBounds(88, 333, 214, 28);
+				lblCliente.setBounds(88, 316, 214, 28);
 				desktopPane.add(lblCliente);
 				
-				JLabel lblClienteEcontrado = new JLabel("cliente cixivneafi");
+				JLabel lblClienteEcontrado = new JLabel("");
 				lblClienteEcontrado.setForeground(Color.WHITE);
 				lblClienteEcontrado.setFont(new Font("SansSerif", Font.PLAIN, 18));
-				lblClienteEcontrado.setBounds(10, 371, 362, 28);
+				lblClienteEcontrado.setBounds(38, 350, 362, 28);
 				desktopPane.add(lblClienteEcontrado);
 		
 		
@@ -145,7 +146,7 @@ public class JIFexcluirCliente extends JInternalFrame {
 					}
 				});
 				btnProcurar.setBackground(violetColor);
-				btnProcurar.setBounds(147, 428, 114, 28);
+				btnProcurar.setBounds(362, 249, 114, 28);
 				btnProcurar.setFont(fontePadrao);
 				desktopPane.add(btnProcurar);
 				
@@ -154,29 +155,36 @@ public class JIFexcluirCliente extends JInternalFrame {
 						public void actionPerformed(ActionEvent e) {
 							//função de excluir cliente
 							Long excluirID = Long.parseLong(txtExcluirID.getText());
-
+							
+							
 							ClientesEntidades clienteExistente = clientesController.clientesServices.findById(excluirID);
 							if (clienteExistente == null) {
-								System.out.println("Cliente não encontrado");
+								JOptionPane.showMessageDialog(null, "Cliente não encontrado.");
 								return;
 							}
 
 							clientesController.clientesServices.deleteById(excluirID);
-							System.out.println("Cliente excluído com sucesso");
+							JOptionPane.showMessageDialog(null, "Cliente excluído com sucesso!");
 						}
 					});
 				btnExcluir.setBackground(violetColor);
-				btnExcluir.setBounds(326, 428, 114, 28);
+				btnExcluir.setBounds(286, 428, 114, 28);
 				btnExcluir.setFont(fontePadrao);
 				desktopPane.add(btnExcluir);
 				
 				JButton btnCancelar = new JButton("Cancelar");
 				btnCancelar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
+						int dialogButton = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja cancelar? Todos os dados serão perdidos.", "Cancelar",
+								JOptionPane.YES_NO_OPTION);
+
+						if (dialogButton == JOptionPane.YES_OPTION) {
+							dispose();
+						}
 					}
 				});
 				btnCancelar.setBackground(violetColor);
-				btnCancelar.setBounds(25, 428, 114, 28);
+				btnCancelar.setBounds(123, 428, 114, 28);
 				btnCancelar.setFont(fontePadrao);
 				desktopPane.add(btnCancelar);
 

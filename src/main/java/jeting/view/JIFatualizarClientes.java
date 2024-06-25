@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JDesktopPane;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import jeting.controller.ClientesController;
@@ -121,33 +122,38 @@ public class JIFatualizarClientes extends JInternalFrame {
 		JLabel lblClienteIdAatualizar = new JLabel(" ID do Cliente a ser atualizado");
 		lblClienteIdAatualizar.setForeground(Color.WHITE);
 		lblClienteIdAatualizar.setFont(new Font("SansSerif", Font.PLAIN, 18));
-		lblClienteIdAatualizar.setBounds(380, 219, 259, 28);
+		lblClienteIdAatualizar.setBounds(408, 269, 259, 28);
 		desktopPane.add(lblClienteIdAatualizar);
 		
 		JTextField txtClienteIdAtualizar = new JTextField();
 		txtClienteIdAtualizar.setForeground(Color.WHITE);
 		txtClienteIdAtualizar.setColumns(10);
 		txtClienteIdAtualizar.setBackground(Color.BLACK);
-		txtClienteIdAtualizar.setBounds(381, 257, 152, 28);
+		txtClienteIdAtualizar.setBounds(409, 307, 152, 28);
 		desktopPane.add(txtClienteIdAtualizar);
 		
 		JButton btnProcurar_1 = new JButton("Procurar");
+		btnProcurar_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Long clienteAtualizado = Long.parseLong(txtClienteIdAtualizar.getText());
+				
+				ClientesEntidades clienteExistente = clientesController.clientesServices.findById(clienteAtualizado);
+				
+				if(clienteExistente == null) {
+					JOptionPane.showMessageDialog(null, "Cliente não contrado");
+					return;
+				}
+				
+				txtNomeAtualizado.setText(clienteExistente.getNome());
+				txtCpfCnpjAtualizado.setText(clienteExistente.getCpfCnpj());
+				txtTelefoneAtualizado.setText(clienteExistente.getTelefone());
+				txtEmailAtualizado.setText(clienteExistente.getEmail());
+			}
+		});
 		btnProcurar_1.setFont(new Font("SansSerif", Font.PLAIN, 18));
 		btnProcurar_1.setBackground(new Color(138, 43, 226));
-		btnProcurar_1.setBounds(553, 257, 114, 28);
+		btnProcurar_1.setBounds(581, 307, 114, 28);
 		desktopPane.add(btnProcurar_1);
-		
-		JLabel lblCliente_1 = new JLabel("---- Cliente Encontrado ----");
-		lblCliente_1.setForeground(Color.WHITE);
-		lblCliente_1.setFont(new Font("SansSerif", Font.PLAIN, 18));
-		lblCliente_1.setBounds(380, 333, 214, 28);
-		desktopPane.add(lblCliente_1);
-		
-		JLabel lblClienteEcontrado_1 = new JLabel("cliente cixivneafi");
-		lblClienteEcontrado_1.setForeground(Color.WHITE);
-		lblClienteEcontrado_1.setFont(new Font("SansSerif", Font.PLAIN, 18));
-		lblClienteEcontrado_1.setBounds(380, 382, 300, 28);
-		desktopPane.add(lblClienteEcontrado_1);
 
 		// BOTÕES
 		JButton btnAtualizarCadastro = new JButton("Atualizar");
@@ -178,10 +184,12 @@ public class JIFatualizarClientes extends JInternalFrame {
 		        
 		        clienteAtualizado = clientesController.clientesServices.atualizarCliente(clienteAtualizado);
 		        if (clienteAtualizado != null) {
-		            System.out.println("Cliente atualizado com sucesso");
+		            JOptionPane.showMessageDialog(null, "Cliente atualizado com sucesso!");
 		        } else {
-		            System.out.println("Erro ao atualizar");
+		            JOptionPane.showMessageDialog(null, "Erro ao atualizar.");
 		        }
+		        
+		        
 			}
 		});
 		btnAtualizarCadastro.setBackground(violetColor);
@@ -191,6 +199,16 @@ public class JIFatualizarClientes extends JInternalFrame {
 		desktopPane.add(btnAtualizarCadastro);
 
 		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int dialogButton = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja cancelar? Todos os dados serão perdidos.", "Cancelar",
+						JOptionPane.YES_NO_OPTION);
+
+				if (dialogButton == JOptionPane.YES_OPTION) {
+					dispose();
+				}
+			}
+		});
 		btnCancelar.setBackground(violetColor);
 		btnCancelar.setBounds(409, 492, 114, 28);
 		btnCancelar.setFont(fontePadrao);
