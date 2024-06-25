@@ -22,8 +22,22 @@ public ServicosServices servicosServices;
 		return servicosServices.cadastrarNovoServico(novoServico);
 	}
 	
+	public ServicosEntidades atualizarServico(ServicosDTO servicosDTO, Long id) {
+		ServicosEntidades servicoAtualizado = new ServicosEntidades();
+		servicoAtualizado.setId(id);
+		servicoAtualizado.setNomeServico(servicosDTO.getNomeServico());
+		servicoAtualizado.setDescricao(servicosDTO.getDescricao());
+		servicoAtualizado.setValor(servicosDTO.getValor());
+		return servicosServices.atualizarServico(servicoAtualizado);
+
+	}
+	
 	public List<ServicosEntidades> findAll() {
 		return servicosServices.findAll();
+	}
+	
+	public Long countServicos() {
+		return servicosServices.countServicos();
 	}
 	
 	public void excluirServico(Long id) {

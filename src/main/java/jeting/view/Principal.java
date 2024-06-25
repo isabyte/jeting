@@ -7,10 +7,12 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JSeparator;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JDesktopPane;
+import java.awt.Color;
 
 public class Principal extends JFrame {
 
@@ -49,9 +51,17 @@ public class Principal extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		// Desktop pane
 		JDesktopPane desktopPane = new JDesktopPane();
+		desktopPane.setBackground(new Color(237, 237, 238));
 		desktopPane.setBounds(10, 10, 932, 704);
 		contentPane.add(desktopPane);
+		
+		// Gráfico
+		JIFGrafico grafico = new JIFGrafico();
+		grafico.setSize(800, 650);
+		desktopPane.add(grafico);
+		grafico.setVisible(true);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -109,27 +119,77 @@ public class Principal extends JFrame {
 		menuBar.add(mnNewMenu_1);
 		
 		JMenuItem mntmNewMenuItem_4 = new JMenuItem("Serviços oferecidos");
+		mntmNewMenuItem_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JIFListarServicos listarServicos = new JIFListarServicos();
+				desktopPane.add(listarServicos);
+				listarServicos.setVisible(true);
+			}
+		});
 		mnNewMenu_1.add(mntmNewMenuItem_4);
 		
 		JSeparator separator_2 = new JSeparator();
 		mnNewMenu_1.add(separator_2);
 		
 		JMenuItem mntmNewMenuItem_5 = new JMenuItem("Novo serviço");
+		mntmNewMenuItem_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JIFNovoServico novoServico = new JIFNovoServico();
+				desktopPane.add(novoServico);
+				novoServico.setVisible(true);
+			}
+		});
 		mnNewMenu_1.add(mntmNewMenuItem_5);
 		
 		JMenuItem mntmNewMenuItem_6 = new JMenuItem("Atualizar serviço");
+		mntmNewMenuItem_6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JIFAtualizarServico atualizarServico = new JIFAtualizarServico();
+				desktopPane.add(atualizarServico);
+				atualizarServico.setVisible(true);
+			}
+		});
 		mnNewMenu_1.add(mntmNewMenuItem_6);
 		
 		JSeparator separator_3 = new JSeparator();
 		mnNewMenu_1.add(separator_3);
 		
 		JMenuItem mntmNewMenuItem_7 = new JMenuItem("Excluir serviço");
+		mntmNewMenuItem_7.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JIFExcluirServico excluirServico = new JIFExcluirServico();
+				desktopPane.add(excluirServico);
+				excluirServico.setVisible(true);
+			}
+		});
 		mnNewMenu_1.add(mntmNewMenuItem_7);
 		
 		JMenu mnNewMenu_2 = new JMenu("Configurações");
 		menuBar.add(mnNewMenu_2);
 		
 		JMenuItem mntmNewMenuItem_8 = new JMenuItem("Sair");
+		mntmNewMenuItem_8.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int dialogButton = JOptionPane.showConfirmDialog (null, "Tem certeza que deseja sair?", "Sair", JOptionPane.YES_NO_OPTION);
+
+				if(dialogButton == JOptionPane.YES_OPTION) {
+					dispose();
+				}
+			}
+		});
+		
+		JMenuItem mntmNewMenuItem_9 = new JMenuItem("Gráfico de estatísticas");
+		mntmNewMenuItem_9.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JIFGrafico grafico = new JIFGrafico();
+				desktopPane.add(grafico);
+				grafico.setVisible(true);
+			}
+		});
+		mnNewMenu_2.add(mntmNewMenuItem_9);
+		
+		JSeparator separator_4 = new JSeparator();
+		mnNewMenu_2.add(separator_4);
 		mnNewMenu_2.add(mntmNewMenuItem_8);
 	}
 }

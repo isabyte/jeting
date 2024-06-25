@@ -47,5 +47,9 @@ public class ClientesRepository implements BasicCrud {
 	public List<ClientesEntidades> findAll() {
 		return em.createQuery("SELECT c FROM clientes c", ClientesEntidades.class).getResultList();
 	}
+	
+	public Long countClientes() {
+		return (Long) em.createQuery("SELECT COUNT(c) FROM clientes c").getSingleResult();
+	}
 
 }

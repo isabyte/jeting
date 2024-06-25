@@ -14,14 +14,19 @@ public class ServicosServices {
 	}
 	
 	public ServicosEntidades atualizarServico(ServicosEntidades servico) {
+		return (ServicosEntidades) servicosRepository.updateById(servico);
+		/*
 		ServicosEntidades servicoExistente = (ServicosEntidades) servicosRepository.findById(servico.getId());
 		if(servicoExistente == null) {
 			return null;
 		}
+		System.out.println("servico existente diferente de null");
 		servicoExistente.setNomeServico (servico.getNomeServico());
 		servicoExistente.setDescricao(servico.getDescricao());
 		servicoExistente.setValor(servico.getValor());
+		System.out.println("setou em servico existente");
 		return servico;
+		*/
 		}
 	
 	public ServicosEntidades findById(Long id) {
@@ -34,6 +39,10 @@ public class ServicosServices {
 	
 	public List<ServicosEntidades> findAll() {
 		return servicosRepository.findAll();
+	}
+	
+	public Long countServicos() {
+		return servicosRepository.countServicos();
 	}
 
 }
