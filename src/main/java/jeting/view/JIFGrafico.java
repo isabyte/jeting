@@ -40,7 +40,7 @@ public class JIFGrafico extends JInternalFrame {
 	 */
 	public JIFGrafico() {
 		setClosable(true);
-		setSize(859, 547);
+		setSize(1489, 850);
 		getContentPane().setLayout(new BorderLayout()); // new
 		
 		// panel para os dados
@@ -70,6 +70,7 @@ public class JIFGrafico extends JInternalFrame {
 		JFreeChart chart = createChart(dataset);
 		
 		ChartPanel chartPanel = new ChartPanel(chart);
+		chartPanel.setPreferredSize(new java.awt.Dimension(800,650));
 		chartPanel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
 		chartPanel.setBackground(Color.WHITE);
 		getContentPane().add(chartPanel, BorderLayout.CENTER);
