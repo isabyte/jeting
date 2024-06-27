@@ -125,13 +125,14 @@ private static Scanner scanner = new Scanner(System.in);
         System.out.print("Novo telefone: ");
         clientesDTO.setTelefone(scanner.nextLine());
 
-        ClientesEntidades clienteAtualizado = new ClientesEntidades();
+       /* ClientesEntidades clienteAtualizado = new ClientesEntidades();
         clienteAtualizado.setId(id);
         clienteAtualizado.setNome(clientesDTO.getNome());
         clienteAtualizado.setCpfCnpj(clientesDTO.getCpfCnpj());
         clienteAtualizado.setEmail(clientesDTO.getEmail());
-        clienteAtualizado.setTelefone(clientesDTO.getTelefone());
-
+        clienteAtualizado.setTelefone(clientesDTO.getTelefone());*/
+        ClientesEntidades clienteAtualizado = clientesController.atualizarCliente(clientesDTO, id);
+        
         clienteAtualizado = clientesController.clientesServices.atualizarCliente(clienteAtualizado);
         if (clienteAtualizado != null) {
             System.out.println("Cliente atualizado com sucesso");

@@ -48,5 +48,9 @@ public class ServicosRepository implements BasicCrud {
 	public List<ServicosEntidades> findAll() {
 		return em.createQuery("SELECT s FROM servicos s", ServicosEntidades.class).getResultList();
 	}
+	
+	public Long countServicos() {
+		return (Long) em.createQuery("SELECT COUNT(s) FROM servicos s").getSingleResult();
+	}
 
 }

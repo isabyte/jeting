@@ -1,31 +1,56 @@
 package jeting.model.repositories;
 
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
+
+import jeting.model.entities.EnderecosEntidades;
+
+
 public class EnderecosRepository implements BasicCrud {
 	
-	// entity manager
+	EntityManager em = Persistence.createEntityManagerFactory("JetingDB").createEntityManager();
 
 	@Override
 	public Object create(Object object) {
-		// TODO Auto-generated method stub
-		return null;
+		EnderecosEntidades endereco = (EnderecosEntidades) object;
+		em.getTransaction().begin();
+		em.persist(endereco);
+		em.getTransaction().commit();
+		return findById(endereco.getId());
 	}
 
 	@Override
 	public Object findById(Long id) {
-		// TODO Auto-generated method stub
+		try {
+			EnderecosEntidades enderecoInData = em.find(EnderecosEntidades.class, id);
+			return enderecoInData;
+		} catch (Exception e) {
+			System.out.println(e.getCause());
+		}
 		return null;
 	}
 
 	@Override
 	public Object updateById(Object object) {
-		// TODO Auto-generated method stub
+		EnderecosEntidades enderecoUpdate = (EnderecosEntidades) object;
+		em.getTransaction().begin();
+		em.merge(enderecoUpdate);
+		em.getTransaction().commit();
 		return null;
 	}
 
 	@Override
 	public void delete(Long id) {
-		// TODO Auto-generated method stub
-		
+		em.getTransaction().begin();
+		EnderecosEntidades enderecoToDelete = (EnderecosEntidades) findById(id);
+		em.remove(enderecoToDelete);
+		em.getTransaction().commit();		
+	}
+	
+	public List<EnderecosEntidades> findAll(){
+		return em.createQuery("SELECT e FROM EnderecosEntity e",EnderecosEntidades.class).getResultList();
 	}
 
 }

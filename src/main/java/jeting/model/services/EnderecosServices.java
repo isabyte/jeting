@@ -12,19 +12,7 @@ public class EnderecosServices {
 	}
 	
 	public EnderecosEntidades atualizarEndereco(EnderecosEntidades endereco) {
-		EnderecosEntidades enderecoExistente = (EnderecosEntidades) enderecosRepository.findById(endereco.getId());
-		if(enderecoExistente == null) {
-			return null;
-		}
-		enderecoExistente.setLogradouro(endereco.getLogradouro());
-		enderecoExistente.setNumero(endereco.getNumero());
-		enderecoExistente.setComplemento(endereco.getComplemento());
-		enderecoExistente.setBairro(endereco.getBairro());
-		enderecoExistente.setCidade(endereco.getCidade());
-		enderecoExistente.setEstado(endereco.getEstado());
-		enderecoExistente.setPais(endereco.getPais());
-		enderecoExistente.setCep(endereco.getCep());
-		return endereco;
+		return (EnderecosEntidades) enderecosRepository.updateById(endereco.getId());
 		}
 	
 	public EnderecosEntidades findById(Long id) {

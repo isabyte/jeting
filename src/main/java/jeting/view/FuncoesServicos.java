@@ -93,17 +93,25 @@ public class FuncoesServicos {
 		System.out.print("Novo valor: ");
 		servicosDTO.setValor(scanner.nextFloat());
 
+		/*
 		ServicosEntidades servicoAtualizado = new ServicosEntidades();
 		servicoAtualizado.setId(id);
 		servicoAtualizado.setNomeServico(servicosDTO.getNomeServico());
 		servicoAtualizado.setDescricao(servicosDTO.getDescricao());
 		servicoAtualizado.setValor(servicosDTO.getValor());
+		*/
+		ServicosEntidades servicoAtualizado = servicosController.atualizarServico(servicosDTO, id);
+
+		
 		servicoAtualizado = servicosController.servicosServices.atualizarServico(servicoAtualizado);
+		
 		if (servicoAtualizado != null) {
 			System.out.println("Serviço atualizado com sucesso");
 		} else {
 			System.out.println("Erro ao atualizar");
 		}
+		
+		
 	}
 
 	private static void listarServicos() {
