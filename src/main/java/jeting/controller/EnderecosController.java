@@ -27,5 +27,19 @@ public class EnderecosController {
 		
 		return novoEndereco;
 	}
+	
+	public EnderecosEntidades atualizarEndereco(EnderecosDTO enderecosDTO) {
+		EnderecosEntidades enderecoExistente = new EnderecosEntidades();
+		enderecoExistente.setLogradouro(enderecosDTO.getLogradouro());
+		enderecoExistente.setNumero(enderecosDTO.getNumero());
+		enderecoExistente.setComplemento(enderecosDTO.getComplemento());
+		enderecoExistente.setBairro(enderecosDTO.getBairro());
+		enderecoExistente.setCidade(enderecosDTO.getCidade());
+		enderecoExistente.setEstado(enderecosDTO.getEstado());
+		enderecoExistente.setPais(enderecosDTO.getPais());
+		enderecoExistente.setCep(enderecosDTO.getCep());
+		
+		return enderecoExistente;
+	}
 
 }
